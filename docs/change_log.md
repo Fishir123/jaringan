@@ -28,3 +28,29 @@ Format: tanggal · host · perubahan · alasan · rollback
 6. srv01/cli01 · hardening sshd via /etc/ssh/sshd_config.d/99-hardening.conf (PermitRootLogin no, PasswordAuthentication no, PubkeyAuthentication yes).
    - Alasan: baseline keamanan (modul 7.7). Diterapkan SETELAH key login terverifikasi → tidak terkunci.
    - Rollback: hapus 99-hardening.conf lalu `systemctl restart ssh`.
+
+## 2026-06-11 — Modul 2 (System Components, fokus srv01)
+
+7. srv01 (hypervisor) · tambah disk kedua VDI 8 GB ke SATA port 1.
+   - Alasan: storage data layanan terpisah dari OS.
+   - Rollback: `VBoxManage storageattach srv01 --storagectl SATA --port 1 --device 0 --medium none` lalu hapus srv01_data.vdi.
+
+8. srv01 · partisi /dev/sdb (1 primary) + format ext4 (/dev/sdb1).
+   - Alasan: siapkan filesystem untuk /srv/data.
+   - Rollback: `wipefs -a /dev/sdb` (menghapus data — hati-hati).
+
+9. srv01 · /etc/fstab tambah mount /srv/data via UUID (defaults,noatime 0 2).
+   - Alasan: mount persisten & stabil (UUID bukan /dev/sdb1). Diuji `umount`+`mount -a` sukses.
+   - Rollback: hapus baris UUID di /etc/fstab lalu `umount /srv/data`.
+
+10. srv01 · struktur /srv/data/{apps,backup,logs} + grup ops + permission (apps 2775 root:ops).
+    - Alasan: standar direktori data & permission aman (bukan 777). fishir masuk grup ops.
+    - Rollback: `rm -rf /srv/data/{apps,backup,logs}`, `groupdel ops`.
+
+11. srv01 · install baseline paket (rsyslog logrotate htop tree + utilitas Modul 1).
+    - Alasan: standar paket server + tooling logging/observasi.
+    - Rollback: `apt-get remove --purge rsyslog logrotate htop tree`.
+
+12. srv01 · logrotate demo: /usr/local/bin/log-demo.sh + /etc/logrotate.d/demo-app.
+    - Alasan: membuktikan log aplikasi ter-rotate (daily, rotate 7, copytruncate).
+    - Rollback: hapus kedua file dan /var/log/demo-app.log*.

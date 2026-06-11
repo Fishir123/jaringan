@@ -1,0 +1,53 @@
+=== LSBLK ===
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0   20G  0 disk 
+├─sda1   8:1    0 18.9G  0 part /
+├─sda2   8:2    0    1K  0 part 
+└─sda5   8:5    0  1.1G  0 part [SWAP]
+sdb      8:16   0    8G  0 disk 
+└─sdb1   8:17   0    8G  0 part /srv/data
+sr0     11:0    1 1024M  0 rom  
+=== DF ===
+Filesystem     Type      Size  Used Avail Use% Mounted on
+udev           devtmpfs  960M     0  960M   0% /dev
+tmpfs          tmpfs     198M  576K  197M   1% /run
+/dev/sda1      ext4       19G  1.1G   17G   6% /
+tmpfs          tmpfs     987M     0  987M   0% /dev/shm
+tmpfs          tmpfs     5.0M     0  5.0M   0% /run/lock
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs          tmpfs     987M   12K  987M   1% /tmp
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+/dev/sdb1      ext4      7.8G  2.1M  7.4G   1% /srv/data
+tmpfs          tmpfs     198M  4.0K  198M   1% /run/user/1000
+=== FSTAB filtered ===
+# device; this may be used with UUID= as a more robust way to name devices
+UUID=1f33bd2d-a298-427e-9f55-721704b7d678 /               ext4    errors=remount-ro 0       1
+UUID=e9f322a2-4b3e-4b5c-8d77-2db4caa8824f none            swap    sw              0       0
+UUID=bf696e46-2255-4dca-ab49-9c7d617a93b3 /srv/data ext4 defaults,noatime 0 2
+=== PERMS ===
+drwxr-xr-x 6 root root 4096 Jun 11 23:42 /srv/data
+drwxrwsr-x 2 root ops  4096 Jun 11 23:42 /srv/data/apps
+drwxr-xr-x 2 root root 4096 Jun 11 23:42 /srv/data/backup
+drwxr-xr-x 2 root root 4096 Jun 11 23:42 /srv/data/logs
+=== ID fishir ===
+uid=1000(fishir) gid=1000(fishir) groups=1000(fishir),27(sudo),100(users),1001(ops)
+=== JOURNAL ERR ===
+Jun 11 23:39:33 srv01 kernel: RETBleed: WARNING: Spectre v2 mitigation leaves CPU vulnerable to RETBleed attacks, data leaks possible!
+Jun 11 23:39:34 srv01 kernel: vmwgfx 0000:00:02.0: [drm] *ERROR* vmwgfx seems to be running on an unsupported hypervisor.
+Jun 11 23:39:34 srv01 kernel: vmwgfx 0000:00:02.0: [drm] *ERROR* This configuration is likely broken.
+Jun 11 23:39:34 srv01 kernel: vmwgfx 0000:00:02.0: [drm] *ERROR* Please switch to a supported graphics device to avoid problems.
+Jun 11 23:40:50 srv01 sudo[824]:   fishir : a password is required ; PWD=/home/fishir ; USER=root ; COMMAND=/usr/sbin/blkid /dev/sdb1
+=== JOURNAL SSH ===
+Jun 11 23:44:13 srv01 sshd-session[1156]: pam_unix(sshd:session): session opened for user fishir(uid=1000) by fishir(uid=0)
+Jun 11 23:44:13 srv01 sshd-session[1156]: pam_unix(sshd:session): session closed for user fishir
+Jun 11 23:44:30 srv01 sshd-session[1194]: Accepted publickey for fishir from 10.10.2.10 port 60572 ssh2: ED25519 SHA256:BwwjayIXG85d9USc87tXtybsWOe8TxMeYOgo8tEOLDI
+Jun 11 23:44:30 srv01 sshd-session[1194]: pam_unix(sshd:session): session opened for user fishir(uid=1000) by fishir(uid=0)
+Jun 11 23:44:30 srv01 sshd-session[1194]: pam_unix(sshd:session): session closed for user fishir
+Jun 11 23:44:31 srv01 sshd-session[1220]: Accepted publickey for fishir from 10.10.2.10 port 60582 ssh2: ED25519 SHA256:BwwjayIXG85d9USc87tXtybsWOe8TxMeYOgo8tEOLDI
+Jun 11 23:44:31 srv01 sshd-session[1220]: pam_unix(sshd:session): session opened for user fishir(uid=1000) by fishir(uid=0)
+Jun 11 23:44:31 srv01 sshd-session[1220]: pam_unix(sshd:session): session closed for user fishir
+Jun 11 23:44:45 srv01 sshd-session[1260]: Accepted publickey for fishir from 10.10.2.10 port 33908 ssh2: ED25519 SHA256:BwwjayIXG85d9USc87tXtybsWOe8TxMeYOgo8tEOLDI
+Jun 11 23:44:45 srv01 sshd-session[1260]: pam_unix(sshd:session): session opened for user fishir(uid=1000) by fishir(uid=0)
+=== LOGROTATE RESULT ===
+-rw-r--r-- 1 root root   0 Jun 11 23:44 /var/log/demo-app.log
+-rw-r--r-- 1 root root 186 Jun 11 23:44 /var/log/demo-app.log.1

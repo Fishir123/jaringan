@@ -81,7 +81,23 @@ Bukti lengkap: `evidence/ping_tests.txt`, `evidence/ssh_tests.txt`, `evidence/ip
   `2210/2211/2212` → guest `22` (adm01/srv01/cli01). Bisa dihapus jika tidak diperlukan.
 - Repo belum dipush ke remote.
 
-## 8. Pemetaan Meta-Principles
+## 8. Bukti Screenshot Konsol VM
+
+Screenshot diambil langsung dari konsol VirtualBox tiap VM dan diverifikasi via OCR.
+
+### adm01 — hostname, IP LAN, ping, SSH key ke srv01 & cli01
+
+![Bukti adm01](/home/faiqm/Documents/jaringan/modul1/bukti_adm01.png)
+
+### srv01 — hostname, IP LAN, hardening sshd, authorized_keys
+
+![Bukti srv01](/home/faiqm/Documents/jaringan/modul1/bukti_srv01.png)
+
+### cli01 — hostname, IP LAN, hardening sshd, authorized_keys
+
+![Bukti cli01](/home/faiqm/Documents/jaringan/modul1/bukti_cli01.png)
+
+## 9. Pemetaan Meta-Principles
 
 | Prinsip | Penerapan |
 |---------|-----------|

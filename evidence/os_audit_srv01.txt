@@ -1,0 +1,105 @@
+=== OS & Kernel ===
+13.4
+Linux srv01 6.12.73+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.73-1 (2026-02-17) x86_64 GNU/Linux
+ Static hostname: srv01
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: 4c255aafa0894fa49ff96ba52a2e086a
+         Boot ID: c11d8dd187544060b367fd81b020667d
+    AF_VSOCK CID: 1
+  Virtualization: oracle
+Operating System: Debian GNU/Linux 13 (trixie)
+          Kernel: Linux 6.12.73+deb13-amd64
+    Architecture: x86-64
+ Hardware Vendor: innotek GmbH
+  Hardware Model: VirtualBox
+Firmware Version: VirtualBox
+   Firmware Date: Fri 2006-12-01
+    Firmware Age: 19y 6month 1w 3d
+=== CPU/MEM ===
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           39 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  2
+On-line CPU(s) list:                     0,1
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Core(TM) i7-10610U CPU @ 1.80GHz
+CPU family:                              6
+Model:                                   142
+Thread(s) per core:                      1
+Core(s) per socket:                      2
+Socket(s):                               1
+Stepping:                                12
+BogoMIPS:                                4607.98
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase bmi1 avx2 bmi2 invpcid rdseed adx clflushopt arat md_clear flush_l1d arch_capabilities
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+L1d cache:                               64 KiB (2 instances)
+L1i cache:                               64 KiB (2 instances)
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       247Mi       1.4Gi       588Ki       463Mi       1.7Gi
+Swap:          1.1Gi          0B       1.1Gi
+=== Disk ===
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0   20G  0 disk 
+├─sda1   8:1    0 18.9G  0 part /
+├─sda2   8:2    0    1K  0 part 
+└─sda5   8:5    0  1.1G  0 part [SWAP]
+sr0     11:0    1 1024M  0 rom  
+Filesystem     Type      Size  Used Avail Use% Mounted on
+udev           devtmpfs  960M     0  960M   0% /dev
+tmpfs          tmpfs     198M  576K  197M   1% /run
+/dev/sda1      ext4       19G  1.1G   17G   6% /
+tmpfs          tmpfs     987M     0  987M   0% /dev/shm
+tmpfs          tmpfs     5.0M     0  5.0M   0% /run/lock
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs          tmpfs     987M   20K  987M   1% /tmp
+tmpfs          tmpfs     1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+tmpfs          tmpfs     198M  4.0K  198M   1% /run/user/1000
+=== Network ===
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:cc:d6:c5 brd ff:ff:ff:ff:ff:ff
+    altname enx080027ccd6c5
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 82984sec preferred_lft 72184sec
+    inet6 fd17:625c:f037:2:a00:27ff:fecc:d6c5/64 scope global dynamic mngtmpaddr proto kernel_ra 
+       valid_lft 86172sec preferred_lft 14172sec
+    inet6 fd17:625c:f037:2:522f:567e:f8b2:720d/64 scope global dynamic mngtmpaddr noprefixroute 
+       valid_lft 86172sec preferred_lft 14172sec
+    inet6 fe80::c0c4:4f81:a3d3:6dc8/64 scope link 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:5c:fa:b9 brd ff:ff:ff:ff:ff:ff
+    altname enx0800275cfab9
+    inet 10.10.2.11/24 brd 10.10.2.255 scope global enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe5c:fab9/64 scope link proto kernel_ll 
+       valid_lft forever preferred_lft forever
+default via 10.0.2.2 dev enp0s3 proto dhcp src 10.0.2.15 metric 1002 
+10.0.2.0/24 dev enp0s3 proto dhcp scope link src 10.0.2.15 metric 1002 
+10.10.2.0/24 dev enp0s8 proto kernel scope link src 10.10.2.11 
+=== Services ===
+  UNIT                      LOAD   ACTIVE SUB     DESCRIPTION
+  cron.service              loaded active running Regular background program processing daemon
+  dbus.service              loaded active running D-Bus System Message Bus
+  getty@tty1.service        loaded active running Getty on tty1
+  ssh.service               loaded active running OpenBSD Secure Shell server
+  systemd-hostnamed.service loaded active running Hostname Service
+  systemd-journald.service  loaded active running Journal Service
+  systemd-logind.service    loaded active running User Login Management
+  systemd-timesyncd.service loaded active running Network Time Synchronization
+  systemd-udevd.service     loaded active running Rule-based Manager for Device Events and Files
+  user@1000.service         loaded active running User Manager for UID 1000
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+10 loaded units listed.
