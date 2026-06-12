@@ -116,3 +116,25 @@ Format: tanggal · host · perubahan · alasan · rollback
 26. cli01 · ubah enp0s8 dari statik ke DHCP (iface enp0s8 inet dhcp).
     - Alasan: jadi DHCP client, dapat IP/gw/DNS otomatis dari srv01.
     - Rollback: kembalikan ke statik 10.20.2.2 + gateway.
+
+## 2026-06-12 — Modul 6 (Web server, vhost, reverse proxy, TLS internal)
+
+27. srv01 · DNS: tambah A record app & portal → 10.20.2.1 (serial 2025060502).
+    - Alasan: nama untuk virtual host.
+    - Rollback: hapus 2 baris A, reload named.
+
+28. srv01 · install NGINX; buat 2 vhost (portal statis, app reverse proxy); nonaktifkan default site.
+    - Alasan: multi-site + reverse proxy.
+    - Rollback: hapus symlink sites-enabled; `apt-get remove --purge nginx`.
+
+29. srv01 · backend python http.server :9000 sebagai systemd service demo-backend (bind 127.0.0.1).
+    - Alasan: backend reverse proxy yang persisten & tidak terekspos langsung.
+    - Rollback: `systemctl disable --now demo-backend`; hapus unit.
+
+30. srv01 · TLS internal: buat Lab2 Internal CA + cert app.lab2.local (SAN), pasang di nginx :443.
+    - Alasan: HTTPS internal.
+    - Rollback: hapus server block 443 + /etc/nginx/ssl/*; hapus /root/ca.
+
+31. cli01 · install CA (labCA.crt) ke trust store (update-ca-certificates).
+    - Alasan: verifikasi HTTPS internal tanpa -k.
+    - Rollback: hapus /usr/local/share/ca-certificates/lab2CA.crt; update-ca-certificates --fresh.

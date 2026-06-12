@@ -1,0 +1,19 @@
+=== HTTPS: app.lab2.local (TLS internal, verified by CA) ===
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 12 Jun 2026 19:17:17 GMT
+Content-Type: text/html
+Content-Length: 20
+Connection: keep-alive
+Last-Modified: Fri, 12 Jun 2026 19:09:34 GMT
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+Backend App Running
+
+=== TLS handshake verify ===
+subject=C=ID, O=Lab2, CN=app.lab2.local
+issuer=C=ID, O=Lab2, CN=Lab2 Internal CA
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Protocol: TLSv1.3
+Verify return code: 0 (ok)

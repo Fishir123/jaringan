@@ -1,0 +1,24 @@
+=== HTTP: app.lab2.local (reverse proxy) ===
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 12 Jun 2026 19:17:05 GMT
+Content-Type: text/html
+Content-Length: 20
+Connection: keep-alive
+Last-Modified: Fri, 12 Jun 2026 19:09:34 GMT
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+Backend App Running
+
+=== HTTP: portal.lab2.local (static vhost) ===
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 12 Jun 2026 19:17:05 GMT
+Content-Type: text/html
+Content-Length: 57
+Last-Modified: Fri, 12 Jun 2026 19:09:34 GMT
+Connection: keep-alive
+ETag: "6a2c596e-39"
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY

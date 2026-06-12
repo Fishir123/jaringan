@@ -1,0 +1,12 @@
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+=== nginx listening ports ===
+LISTEN 0      511                                   0.0.0.0:443       0.0.0.0:*    users:(("nginx",pid=3471,fd=20),("nginx",pid=3470,fd=20),("nginx",pid=3096,fd=20))
+LISTEN 0      511                                   0.0.0.0:80        0.0.0.0:*    users:(("nginx",pid=3471,fd=5),("nginx",pid=3470,fd=5),("nginx",pid=3096,fd=5))   
+LISTEN 0      5                                   127.0.0.1:9000      0.0.0.0:*    users:(("python3",pid=3364,fd=3))                                                 
+
+=== enabled sites ===
+total 0
+lrwxrwxrwx 1 root root 41 Jun 13 02:09 app.lab2.local -> /etc/nginx/sites-available/app.lab2.local
+lrwxrwxrwx 1 root root 44 Jun 13 02:09 portal.lab2.local -> /etc/nginx/sites-available/portal.lab2.local

@@ -1,0 +1,13 @@
+[Unit]
+Description=Demo Backend (python http.server :9000) - Modul 6
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/data/apps/backend
+ExecStart=/usr/bin/python3 -m http.server 9000 --bind 127.0.0.1
+Restart=on-failure
+User=www-data
+
+[Install]
+WantedBy=multi-user.target
