@@ -1,0 +1,10 @@
+zone "lab2.local" {
+    type master;
+    file "/etc/bind/db.lab2.local";
+};
+
+// reverse zone untuk 10.20.2.0/24 (koreksi: /24 -> 2.20.10.in-addr.arpa)
+zone "2.20.10.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.10.20.2";
+};

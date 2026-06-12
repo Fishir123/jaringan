@@ -98,3 +98,21 @@ Format: tanggal · host · perubahan · alasan · rollback
 22. srv01 · install tcpdump; capture ICMP & TCP handshake sebagai evidence.
     - Alasan: packet analysis (membaca echo request/reply & SYN/SYN-ACK/ACK).
     - Rollback: `apt-get remove --purge tcpdump`.
+
+## 2026-06-12 — Modul 5 (DNS + DHCP core services)
+
+23. srv01 · install BIND9; buat zona forward lab2.local & reverse 2.20.10.in-addr.arpa.
+    - Alasan: DNS authoritative internal (nama ↔ IP).
+    - Rollback: hapus zona di named.conf.local + file db.*, restart named; `apt-get remove --purge bind9`.
+
+24. srv01 · install isc-dhcp-server; listen enp0s9; subnet 10.20.2.0/24 (pool .50-.100, gw/DNS .1).
+    - Alasan: DHCP otomatis untuk klien LAN-B + integrasi DNS.
+    - Rollback: kosongkan dhcpd.conf, stop service; `apt-get remove --purge isc-dhcp-server`.
+
+25. srv01 · DHCP reservation host cli01 (MAC 08:00:27:65:ff:50) → fixed 10.20.2.10.
+    - Alasan: IP stabil untuk cli01 via DHCP.
+    - Rollback: hapus blok `host cli01` di dhcpd.conf, restart.
+
+26. cli01 · ubah enp0s8 dari statik ke DHCP (iface enp0s8 inet dhcp).
+    - Alasan: jadi DHCP client, dapat IP/gw/DNS otomatis dari srv01.
+    - Rollback: kembalikan ke statik 10.20.2.2 + gateway.

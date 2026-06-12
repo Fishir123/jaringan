@@ -1,0 +1,11 @@
+@       IN      SOA     srv01.lab2.local. root.lab2.local. (
+                        2025060501      ; Serial (YYYYMMDDnn)
+                        604800          ; Refresh
+                        86400           ; Retry
+                        2419200         ; Expire
+                        604800 )        ; Negative Cache TTL
+;
+@       IN      NS      srv01.lab2.local.
+srv01   IN      A       10.20.2.1
+cli01   IN      A       10.20.2.2
+adm01   IN      A       10.10.2.10

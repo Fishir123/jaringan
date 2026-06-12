@@ -1,0 +1,28 @@
+=== dig forward (srv01/cli01/adm01) ===
+
+; <<>> DiG 9.20.23-1~deb13u1-Debian <<>> @127.0.0.1 srv01.lab2.local
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; WARNING: .local is reserved for Multicast DNS
+;; You are currently testing what happens when an mDNS query is leaked to DNS
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49611
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: c1e478551e3e2b8e010000006a2c52414ffcce8bb7924773 (good)
+;; QUESTION SECTION:
+;srv01.lab2.local.		IN	A
+
+;; ANSWER SECTION:
+srv01.lab2.local.	604800	IN	A	10.20.2.1
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1) (UDP)
+;; WHEN: Sat Jun 13 01:38:57 WIB 2026
+;; MSG SIZE  rcvd: 89
+
+
+10.20.2.2
+10.10.2.10

@@ -1,0 +1,25 @@
+=== dig reverse ===
+
+; <<>> DiG 9.20.23-1~deb13u1-Debian <<>> @127.0.0.1 -x 10.20.2.1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 54070
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: a594903abf1785f2010000006a2c52428e147554a0044117 (good)
+;; QUESTION SECTION:
+;1.2.20.10.in-addr.arpa.		IN	PTR
+
+;; ANSWER SECTION:
+1.2.20.10.in-addr.arpa.	604800	IN	PTR	srv01.lab2.local.
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1) (UDP)
+;; WHEN: Sat Jun 13 01:38:58 WIB 2026
+;; MSG SIZE  rcvd: 109
+
+
+cli01.lab2.local.
