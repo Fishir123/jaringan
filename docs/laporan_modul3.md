@@ -77,7 +77,25 @@ Evidence: `evidence/stress_snapshot.txt`.
 
 ## 8. Bukti Screenshot
 
-![Bukti Modul 3 srv01](/home/faiqm/Documents/jaringan/modul3/bukti_modul3_srv01.png)
+### [1] Observasi proses (PID 1 = systemd, hierarki, konsumen memori)
+
+![Bukti proses](/home/faiqm/Documents/jaringan/modul3/bukti_1_proses.png)
+
+### [2] Custom service demo-app (enabled + journal)
+
+![Bukti service](/home/faiqm/Documents/jaringan/modul3/bukti_2_service.png)
+
+### [3] systemd timer aktif + log tumbuh otomatis per menit
+
+![Bukti timer](/home/faiqm/Documents/jaringan/modul3/bukti_3_timer.png)
+
+### [4] Cron sebagai pembanding
+
+![Bukti cron](/home/faiqm/Documents/jaringan/modul3/bukti_4_cron.png)
+
+### [5] Stress test CPU (proses stress ~100% CPU, load average naik)
+
+![Bukti stress](/home/faiqm/Documents/jaringan/modul3/bukti_5_stress.png)
 
 ## 9. Penyimpangan dari Modul
 
