@@ -72,3 +72,29 @@ Format: tanggal · host · perubahan · alasan · rollback
 16. srv01 · install paket `stress` + jalankan stress test CPU 30s (observability).
     - Alasan: demonstrasi load average & bottleneck CPU.
     - Rollback: `apt-get remove --purge stress`.
+
+## 2026-06-12 — Modul 4 (Networking: routing & packet analysis)
+
+17. Hypervisor · buat host-only vboxnet1 (10.20.2.254/24, DHCP off) + izinkan 10.20.0.0/16 di networks.conf.
+    - Alasan: subnet kedua (LAN-B) untuk skenario routing.
+    - Rollback: `VBoxManage hostonlyif remove vboxnet1`; hapus baris di /etc/vbox/networks.conf.
+
+18. srv01 · tambah NIC3 (host-only vboxnet1) + konfigurasi enp0s9 10.20.2.1/24 (/etc/network/interfaces.d/lanB).
+    - Alasan: srv01 jadi router dengan kaki di LAN-A & LAN-B.
+    - Rollback: hapus file lanB + lepas NIC3 di hypervisor.
+
+19. cli01 · pindah NIC2 ke vboxnet1; IP jadi 10.20.2.2/24 gateway 10.20.2.1.
+    - Alasan: cli01 pindah ke LAN-B, pakai srv01 sebagai gateway.
+    - Rollback: kembalikan adapter ke vboxnet0 + IP 10.10.2.12.
+
+20. srv01 · enable IP forwarding permanen (/etc/sysctl.d/99-router.conf, net.ipv4.ip_forward=1).
+    - Alasan: meneruskan paket antar subnet.
+    - Rollback: hapus file lalu `sysctl --system`.
+
+21. adm01 · static route 10.20.2.0/24 via 10.10.2.11 (post-up di interfaces.d/lan0).
+    - Alasan: adm01 (LAN-A) bisa menjangkau LAN-B via router srv01.
+    - Rollback: hapus baris post-up; `ip route del 10.20.2.0/24`.
+
+22. srv01 · install tcpdump; capture ICMP & TCP handshake sebagai evidence.
+    - Alasan: packet analysis (membaca echo request/reply & SYN/SYN-ACK/ACK).
+    - Rollback: `apt-get remove --purge tcpdump`.

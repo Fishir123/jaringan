@@ -1,0 +1,10 @@
+=== srv01 ip r ===
+default via 10.0.2.2 dev enp0s3 proto dhcp src 10.0.2.15 metric 1002 
+10.0.2.0/24 dev enp0s3 proto dhcp scope link src 10.0.2.15 metric 1002 
+10.10.2.0/24 dev enp0s8 proto kernel scope link src 10.10.2.11 
+10.20.2.0/24 dev enp0s9 proto kernel scope link src 10.20.2.1 
+=== srv01 interfaces ===
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+enp0s3           UP             10.0.2.15/24 fd17:625c:f037:2:522f:567e:f8b2:720d/64 fe80::c0c4:4f81:a3d3:6dc8/64 
+enp0s8           UP             10.10.2.11/24 fe80::a00:27ff:fe5c:fab9/64 
+enp0s9           UP             10.20.2.1/24 fe80::a00:27ff:fe93:a195/64 

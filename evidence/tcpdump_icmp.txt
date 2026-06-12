@@ -1,0 +1,13 @@
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on enp0s8, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+01:24:03.273806 IP 10.10.2.10 > 10.20.2.2: ICMP echo request, id 10, seq 1, length 64
+01:24:03.274729 IP 10.20.2.2 > 10.10.2.10: ICMP echo reply, id 10, seq 1, length 64
+01:24:04.274916 IP 10.10.2.10 > 10.20.2.2: ICMP echo request, id 10, seq 2, length 64
+01:24:04.276030 IP 10.20.2.2 > 10.10.2.10: ICMP echo reply, id 10, seq 2, length 64
+01:24:05.276902 IP 10.10.2.10 > 10.20.2.2: ICMP echo request, id 10, seq 3, length 64
+01:24:05.277660 IP 10.20.2.2 > 10.10.2.10: ICMP echo reply, id 10, seq 3, length 64
+01:24:06.277960 IP 10.10.2.10 > 10.20.2.2: ICMP echo request, id 10, seq 4, length 64
+01:24:06.278709 IP 10.20.2.2 > 10.10.2.10: ICMP echo reply, id 10, seq 4, length 64
+8 packets captured
+8 packets received by filter
+0 packets dropped by kernel
