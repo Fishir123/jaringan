@@ -54,3 +54,21 @@ Format: tanggal · host · perubahan · alasan · rollback
 12. srv01 · logrotate demo: /usr/local/bin/log-demo.sh + /etc/logrotate.d/demo-app.
     - Alasan: membuktikan log aplikasi ter-rotate (daily, rotate 7, copytruncate).
     - Rollback: hapus kedua file dan /var/log/demo-app.log*.
+
+## 2026-06-12 — Modul 3 (Processes, Services, Scheduling, Observability — srv01)
+
+13. srv01 · buat custom service /etc/systemd/system/demo-app.service (Type=simple, Restart=on-failure), enable.
+    - Alasan: ubah log-demo jadi service terkelola systemd.
+    - Rollback: `systemctl disable --now demo-app` lalu hapus unit + daemon-reload.
+
+14. srv01 · buat systemd timer demo-app-periodic.service + .timer (tiap 1 menit), enable --now.
+    - Alasan: penjadwalan modern dengan integrasi journal & dependency.
+    - Rollback: `systemctl disable --now demo-app-periodic.timer` lalu hapus unit + daemon-reload.
+
+15. srv01 · tambah cron user fishir `*/2 * * * * /usr/local/bin/log-demo.sh` (pembanding).
+    - Alasan: perbandingan analitis cron vs systemd timer.
+    - Rollback: `crontab -e` hapus baris log-demo.
+
+16. srv01 · install paket `stress` + jalankan stress test CPU 30s (observability).
+    - Alasan: demonstrasi load average & bottleneck CPU.
+    - Rollback: `apt-get remove --purge stress`.

@@ -1,0 +1,11 @@
+     Loaded: loaded (/etc/systemd/system/demo-app.service; enabled; preset: enabled)
+     Active: inactive (dead) since Fri 2026-06-12 02:45:27 WIB; 21h ago
+   Duration: 33ms
+ Invocation: 1021934f83a2402abc45db74b756ee15
+   Main PID: 2885 (code=exited, status=0/SUCCESS)
+   Mem peak: 1.7M
+        CPU: 9ms
+
+Jun 12 02:45:27 srv01 systemd[1]: Started demo-app.service - Demo Logging Application.
+Jun 12 02:45:27 srv01 systemd[1]: demo-app.service: Deactivated successfully.
+===

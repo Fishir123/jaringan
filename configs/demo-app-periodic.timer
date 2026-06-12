@@ -1,0 +1,10 @@
+[Unit]
+Description=Run demo-app every 1 minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+Unit=demo-app-periodic.service
+
+[Install]
+WantedBy=timers.target

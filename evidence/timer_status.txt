@@ -1,0 +1,11 @@
+Sat 2026-06-13 00:07:58 WIB      58s Sat 2026-06-13 00:06:58 WIB       1s ago demo-app-periodic.timer      demo-app-periodic.service
+Sat 2026-06-13 00:11:34 WIB 4min 34s Fri 2026-06-12 00:18:06 WIB 2h 24min ago logrotate.timer              logrotate.service
+Sat 2026-06-13 01:53:02 WIB 1h 46min Fri 2026-06-12 02:06:18 WIB    46min ago apt-daily.timer              apt-daily.service
+Sat 2026-06-13 06:43:34 WIB       6h Fri 2026-06-12 23:44:52 WIB    22min ago apt-daily-upgrade.timer      apt-daily-upgrade.service
+Sat 2026-06-13 21:18:43 WIB      21h Thu 2026-06-11 23:54:35 WIB 2h 48min ago systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+Sun 2026-06-14 00:00:00 WIB      23h Sat 2026-06-13 00:00:01 WIB     6min ago dpkg-db-backup.timer         dpkg-db-backup.service
+Sun 2026-06-14 03:10:28 WIB 1 day 3h Thu 2026-06-11 10:18:58 WIB            - e2scrub_all.timer            e2scrub_all.service
+Mon 2026-06-15 01:09:48 WIB   2 days Thu 2026-06-11 10:18:58 WIB            - fstrim.timer                 fstrim.service
+
+===
+*/2 * * * * /usr/local/bin/log-demo.sh

@@ -1,0 +1,6 @@
+[Unit]
+Description=Periodic Demo App
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/log-demo.sh
