@@ -61,7 +61,25 @@ Evidence: `miniproject/evidence/web_to_db_remote.txt`, `webapp_output.txt`,
 - Catatan produksi: simpan kredensial via secret manager/env, aktifkan TLS untuk
   koneksi MariaDB.
 
-## 8. Bukti Screenshot
+## 8. Cron Job (penjadwalan otomatis)
+
+Tiga cron job dipasang lewat `/etc/cron.d/` (format dengan field user).
+
+| # | VM | Jadwal | Script | Fungsi |
+|---|----|--------|--------|--------|
+| 1 | adm01 (DB) | `0 2 * * *` (02:00 harian) | `/usr/local/sbin/db_backup.sh` | Backup `labapp` via mysqldump -> `/srv/backup/mariadb/*.sql.gz` |
+| 2 | cli01 (Web) | `*/5 * * * *` (tiap 5 menit) | `/usr/local/sbin/web_db_healthcheck.sh` | Cek koneksi web -> DB remote, log UP/DOWN |
+| 3 | adm01 (DB) | `30 2 * * *` (02:30 harian) | `/usr/local/sbin/db_backup_cleanup.sh` | Retensi: hapus backup > 7 hari |
+
+Bukti berjalan otomatis: log health check terisi pada `00:00:01` oleh cron
+(`*/5`), bukan eksekusi manual. Backup menghasilkan file `.sql.gz` valid
+(berisi `CREATE TABLE visitors` + data). Log di `/var/log/db_backup.log` dan
+`/var/log/web_db_health.log`.
+
+Evidence: `evidence/cron_db_backup.txt`, `evidence/cron_web_healthcheck.txt`.
+Script & cron file di `scripts/` dan `configs/cron_*.cron`.
+
+## 9. Bukti Screenshot
 
 ### [1] Aplikasi web (browser) — menampilkan data dari DB remote
 ![web app](/home/faiqm/Documents/jaringan/miniproject/bukti_1_webapp.png)
@@ -71,6 +89,12 @@ Evidence: `miniproject/evidence/web_to_db_remote.txt`, `webapp_output.txt`,
 
 ### [3] VM1 Web Server (cli01) — NGINX/PHP-FPM/Webmin + test DB remote
 ![web server](/home/faiqm/Documents/jaringan/miniproject/bukti_3_web_server.png)
+
+### [4] Cron job DB server (adm01) — backup + retensi + log
+![cron db](/home/faiqm/Documents/jaringan/miniproject/bukti_4_cron_db.png)
+
+### [5] Cron job Web server (cli01) — health check + log otomatis
+![cron web](/home/faiqm/Documents/jaringan/miniproject/bukti_5_cron_web.png)
 
 Catatan: Webmin (kedua VM) terbukti aktif lewat status service & listen :10000
 pada screenshot konsol, serta halaman "Login to Webmin" (HTTP 200) saat diakses.

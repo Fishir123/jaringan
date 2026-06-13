@@ -1,0 +1,4 @@
+# Mini Project cron - Web server (cli01)
+# format: m h dom mon dow user command
+# Cron job 2: health check web -> DB remote tiap 5 menit
+*/5 * * * * root /usr/local/sbin/web_db_healthcheck.sh

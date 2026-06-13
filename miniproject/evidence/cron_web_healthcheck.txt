@@ -1,0 +1,9 @@
+=== /etc/cron.d/miniproject-web ===
+# Mini Project cron - Web server (cli01)
+# format: m h dom mon dow user command
+# Cron job 2: health check web -> DB remote tiap 5 menit
+*/5 * * * * root /usr/local/sbin/web_db_healthcheck.sh
+
+=== /var/log/web_db_health.log ===
+2026-06-13 23:57:16 UP   DB 10.20.2.11 reachable, visitors=3
+2026-06-14 00:00:01 UP   DB 10.20.2.11 reachable, visitors=3

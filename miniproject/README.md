@@ -78,8 +78,19 @@ Bukti: `host_info` yang dilaporkan mysqli = **"10.20.2.11 via TCP/IP"**
 3. POST form → INSERT row baru (id=3) tersimpan di DB VM2.
 4. Webmin kedua VM merespons HTTP 200 di :10000.
 
-Evidence: `evidence/web_to_db_remote.txt`, `webapp_output.txt`, `db_listen.txt`,
-screenshot di `Documents/jaringan/miniproject/`.
+Evidence: `evidence/web_to_db_remote.txt`, `webapp_output.txt`,
+`db_listen.txt`.
+
+## Cron Job (3)
+
+| # | VM | Jadwal | Fungsi |
+|---|----|--------|--------|
+| 1 | adm01 | 02:00 harian | Backup DB `labapp` (mysqldump -> .sql.gz) |
+| 2 | cli01 | tiap 5 menit | Health check web -> DB remote (log UP/DOWN) |
+| 3 | adm01 | 02:30 harian | Retensi backup > 7 hari |
+
+File: `/etc/cron.d/miniproject-db` (adm01), `/etc/cron.d/miniproject-web`
+(cli01). Script di `scripts/`. Terbukti jalan otomatis (log cron `*/5`).
 
 ## Penyimpangan dari ketentuan
 - OS Debian 13 (trixie), bukan Debian 12 (mengikuti ISO tersedia). Semua tool

@@ -1,0 +1,16 @@
+=== /etc/cron.d/miniproject-db ===
+# Mini Project cron - DB server (adm01)
+# format: m h dom mon dow user command
+# Cron job 1: backup harian database labapp jam 02:00
+0 2 * * * root /usr/local/sbin/db_backup.sh
+# Cron job 3: retensi backup 7 hari jam 02:30
+30 2 * * * root /usr/local/sbin/db_backup_cleanup.sh
+
+=== /srv/backup/mariadb ===
+total 4.0K
+-rw-r--r-- 1 root root 1.1K Jun 13 23:56 labapp_2026-06-13_235615.sql.gz
+
+=== /var/log/db_backup.log ===
+2026-06-13 23:56:15 OK  backup -> /srv/backup/mariadb/labapp_2026-06-13_235615.sql.gz (4.0K)
+2026-06-14 00:00:26 CLN hapus 0 backup lama (>7 hari)
+2026-06-14 00:00:34 CLN hapus 0 backup lama (>7 hari)
