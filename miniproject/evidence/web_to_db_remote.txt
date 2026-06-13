@@ -1,0 +1,7 @@
+=== mysqli test web->DB remote ===
+hasil
+WEB->DB REMOTE OK
+id	name	note	created_at
+1	Fishir	entri awal mini project	2026-06-13 02:36:40
+2	Kelompok 2	web server konek ke DB remote	2026-06-13 02:36:40
+3	TestPost	insert via web ke DB remote	2026-06-13 23:27:38

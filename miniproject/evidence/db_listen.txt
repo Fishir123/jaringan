@@ -1,0 +1,4 @@
+=== adm01 (DB) listen 3306 ===
+LISTEN 0      80        10.20.2.11:3306       0.0.0.0:*    users:(("mariadbd",pid=8759,fd=28))   
+=== webmin 10000 ===
+LISTEN 0      4096         0.0.0.0:10000      0.0.0.0:*    users:(("miniserv.pl",pid=11551,fd=5))

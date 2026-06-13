@@ -1,0 +1,5 @@
+=== curl web app (PHP render) ===
+  <b>Web Server (VM1):</b> 127.0.0.1 (cli01)<br>
+  <b>Database Server (VM2):</b> 10.20.2.11 (adm01) - MariaDB<br>
+  <b>Status koneksi DB:</b> TERHUBUNG (host info: 10.20.2.11 via TCP/IP)</div>
+<tr><td>3</td><td>TestPost</td><td>insert via web ke DB remote</td><td>2026-06-13 23:27:38</td></tr><tr><td>2</td><td>Kelompok 2</td><td>web server konek ke DB remote</td><td>2026-06-13 02:36:40</td></tr><tr><td>1</td><td>Fishir</td><td>entri awal mini project</td><td>2026-06-13 02:36:40</td></tr></table>
