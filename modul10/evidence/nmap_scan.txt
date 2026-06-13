@@ -1,0 +1,15 @@
+=== nmap dari cli01 (10.20.2.10) ke srv01 (10.20.2.1) ===
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-06-14 00:10 WIB
+Nmap scan report for app.lab2.local (10.20.2.1)
+Host is up (0.0016s latency).
+
+PORT     STATE    SERVICE
+22/tcp   open     ssh
+53/tcp   open     domain
+80/tcp   open     http
+443/tcp  open     https
+3306/tcp filtered mysql
+8080/tcp filtered http-proxy
+9000/tcp filtered cslistener
+
+Nmap done: 1 IP address (1 host up) scanned in 1.46 seconds

@@ -1,0 +1,12 @@
+# Modul 10 - fail2ban jail untuk SSH brute-force
+[DEFAULT]
+# backend systemd journal (Debian 13 pakai journald untuk sshd)
+backend = systemd
+ignoreip = 127.0.0.1/8 ::1
+
+[sshd]
+enabled  = true
+port     = ssh
+maxretry = 3
+findtime = 600
+bantime  = 600

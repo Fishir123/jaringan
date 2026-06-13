@@ -1,0 +1,36 @@
+=== ss -tulnp (audit service & port srv01) ===
+tcp 0.0.0.0:22 users:(("sshd",pid=752,fd=6))
+tcp 0.0.0.0:443 users:(("nginx",pid=778,fd=10),("nginx",pid=777,fd=10),("nginx",pid=776,fd=10))
+tcp 0.0.0.0:80 users:(("nginx",pid=778,fd=9),("nginx",pid=777,fd=9),("nginx",pid=776,fd=9))
+tcp 10.0.2.15:53 users:(("named",pid=730,fd=67))
+tcp 10.0.2.15:53 users:(("named",pid=730,fd=68))
+tcp 10.10.2.11:53 users:(("named",pid=730,fd=36))
+tcp 10.10.2.11:53 users:(("named",pid=730,fd=37))
+tcp 10.20.2.1:53 users:(("named",pid=730,fd=40))
+tcp 10.20.2.1:53 users:(("named",pid=730,fd=41))
+udp 0.0.0.0:67 users:(("dhcpd",pid=775,fd=8))
+udp 10.0.2.15:53 users:(("named",pid=730,fd=65))
+udp 10.0.2.15:53 users:(("named",pid=730,fd=66))
+udp 10.0.2.15:68 users:(("dhcpcd",pid=811,fd=3))
+udp 10.10.2.11:53 users:(("named",pid=730,fd=34))
+udp 10.10.2.11:53 users:(("named",pid=730,fd=35))
+udp 10.20.2.1:53 users:(("named",pid=730,fd=38))
+udp 10.20.2.1:53 users:(("named",pid=730,fd=39))
+
+=== nft ruleset input (kebijakan firewall) ===
+table inet filter {
+	chain input {
+		type filter hook input priority filter; policy drop;
+		ct state established,related accept
+		ct state invalid drop
+		iif "lo" accept
+		ip protocol icmp accept
+		ip6 nexthdr ipv6-icmp accept
+		tcp dport 22 accept
+		tcp dport { 80, 443 } accept
+		tcp dport 53 accept
+		udp dport 53 accept
+		udp dport 67 accept
+		limit rate 5/minute burst 5 packets counter packets 0 bytes 0 log prefix "nft-input-drop: "
+	}
+}
